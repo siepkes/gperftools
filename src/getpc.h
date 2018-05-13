@@ -58,6 +58,9 @@
 #include <string.h>         // for memcmp
 #if defined(HAVE_SYS_UCONTEXT_H)
 #include <sys/ucontext.h>
+#if defined(__sun)
+#include <sys/regset.h>
+#endif
 #elif defined(HAVE_UCONTEXT_H)
 #include <ucontext.h>       // for ucontext_t (and also mcontext_t)
 #elif defined(HAVE_CYGWIN_SIGNAL_H)

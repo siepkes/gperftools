@@ -46,6 +46,9 @@
 #endif
 #if defined(HAVE_SYS_UCONTEXT_H)
 #include <sys/ucontext.h>
+#if defined(__sun)
+#include <sys/regset.h>
+#endif
 #elif defined(HAVE_UCONTEXT_H)
 #include <ucontext.h>
 #elif defined(HAVE_CYGWIN_SIGNAL_H)

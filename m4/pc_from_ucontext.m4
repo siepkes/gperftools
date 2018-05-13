@@ -55,7 +55,10 @@ AC_DEFUN([AC_PC_FROM_UCONTEXT],
                         pc_field_found=true)
        elif test "x$ac_cv_header_sys_ucontext_h" = xyes; then
          AC_TRY_COMPILE([#define _GNU_SOURCE 1
-                         #include <sys/ucontext.h>],
+                         #include <sys/ucontext.h>
+                         #if defined(__sun)
+                         #include <sys/regset.h>
+                         #endif],
                         [ucontext_t u; return u.$pc_field == 0;],
                         AC_DEFINE_UNQUOTED(PC_FROM_UCONTEXT, $pc_field,
                                            How to access the PC from a struct ucontext)
